@@ -8,7 +8,7 @@ Logtube 是专门为结构化日志设计的日志系统。
 
 ## 标准格式
 
-标准格式的日志事件字段如下：
+标准格式用于日志**最终存储**使用。
 
 ```javascript
 {
@@ -29,7 +29,7 @@ Logtube 是专门为结构化日志设计的日志系统。
 
 ## 压缩格式
 
-日志事件的字段可以进一步压缩，标准格式和压缩格式是完全等价的。
+日志事件的字段可以进一步压缩，压缩格式用于日志的产生，文件存储和传输等中间步骤，标准格式和压缩格式是完全等价的。
 
 ```javascript
 {
@@ -81,12 +81,12 @@ Logtube 支持 2 中传输方式，Redis 和 SPTP.
 
 ## Redis
 
-通过 Redis LIST 传输有两种模式，一种是直接传输 JSON 格式的 Event，另一种是传输 Filebeat 读取日志文件产生的 Event。
+通过 Redis LIST 传输有两种模式，一种是直接传输压缩格式的日志事件，另一种是传输 Filebeat 读取日志文件产生的事件。
 
-先前的日志文件路径规范保证了 `env`, `topic`, `project` 信息会通过 Filebeat Event 的 `source` 字段回传。
+先前的日志文件路径规范保证了 `env`, `topic`, `project` 信息会通过 Filebeat 事件的 `source` 字段回传。
 
 ```
-RPUSH logtube [JSON 序列化后的 Event]
+RPUSH logtube [压缩格式的 Event]
 ```
 
 ```
@@ -94,6 +94,8 @@ RPUSH logtube.filebeat [Filebeat 读取日志文件后产生的 Event]
 ```
 
 ## SPTP
+
+通过 SPTP 传输压缩格式的日志事件，详见 https://github.com/yankeguo/sptp
 
 SPTP 只适合于内网环境，使用 UDP 封包重组后进行日志传输。
 
