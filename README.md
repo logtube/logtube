@@ -97,7 +97,7 @@ RPUSH logtube.filebeat [Filebeat 读取日志文件后产生的 Event]
 
 ## SPTP
 
-通过 SPTP 传输压缩格式的日志事件，详见 https://github.com/yankeguo/sptp
+通过 SPTP 传输压缩格式的日志事件，详见 https://github.com/logtube/sptp
 
 SPTP 只适合于内网环境，使用 UDP 封包重组后进行日志传输。
 
