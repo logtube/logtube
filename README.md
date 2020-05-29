@@ -18,6 +18,7 @@ Logtube 是专门为结构化日志设计的日志系统。
     "project"   : "project",                        // project,     required, project name
     "topic"     : "topic",                          // topic,       required, topic name, log levels such as "debug", "info" are basically topics
     "crid"      : "0987654321af",                   // crid,        optional, correlation id
+    "crsrc"     : "some-project",                   // crsrc,       optional, correlation source
     "message"   : "this is message body",           // message,     optional, plain message body
     "keyword"   : "keyword1,keyword2",              // keyword,     optional, comma seperated keywords
 
@@ -39,6 +40,7 @@ Logtube 是专门为结构化日志设计的日志系统。
     "p": "project",                         // project,     required, project name
     "o": "topic",                           // topic,       required, topic name, log levels such as "debug", "info" are basically topics
     "c": "0987654321af",                    // crid,        optional, correlation id
+    "s": "from-project",                    // crsrc,       optional, correlation source
     "m": "this is message body",            // message,     optional, plain message body
     "k": "keyword1,keyword2",               // keyword,     optional, comma seperated keywords
     "x": {                                  // custom fields, optional
